@@ -8,6 +8,7 @@ import java.util.List;
 public class CarList {
 
   private static List<Car> carList;
+  private final int MAX_NUMBER_INIT = 0;
 
   private CarList(List<Car> cars) {
     this.carList = cars;
@@ -37,7 +38,7 @@ public class CarList {
   }
 
   public int maxMoveCount() {
-    int maxNum = 0;
+    int maxNum = MAX_NUMBER_INIT;
     for(Car car : carList) {
       maxNum = Math.max(car.moveCount, maxNum);
     }

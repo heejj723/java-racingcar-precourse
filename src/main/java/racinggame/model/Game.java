@@ -9,13 +9,16 @@ import nextstep.utils.Randoms;
 public class Game {
 
   public final CarList carList;
+  private final int BEGIN_INDEX = 0;
+  private final int RANDOM_RANGE_START = 0;
+  private final int RANDOM_RANGE_END = 9;
 
   public Game(CarList carList) {
     this.carList = carList;
   }
 
   public int getRandomNumber() {
-    return Randoms.pickNumberInRange(0,9);
+    return Randoms.pickNumberInRange(RANDOM_RANGE_START,RANDOM_RANGE_END);
   }
 
   public List<Car> getResultOfRound() {
@@ -33,6 +36,6 @@ public class Game {
     for (String winnerName : winnerNameList) {
       result.append(winnerName);
     }
-    return result.substring(0, result.length()-1);
+    return result.substring(BEGIN_INDEX, result.length()-1);
   }
 }

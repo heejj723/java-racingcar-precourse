@@ -11,13 +11,14 @@ public class Car {
   public static final String COMMA_STRING = ",";
   private final String CAR_NAME_VALIDATE_PATTERN = "[a-zA-z]+";
   private final int MOVE_BOUNDARY = 4;
+  private final int MOVE_COUNT_INIT = 0;
   public String carName;
   public int moveCount;
 
   public Car(String carName) throws InvalidFormatException {
     validateCarName(carName);
     this.carName = carName;
-    this.moveCount = 0;
+    this.moveCount = MOVE_COUNT_INIT;
   }
 
   private void validateCarName(String carName) throws InvalidFormatException {
