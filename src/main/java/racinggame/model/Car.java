@@ -9,8 +9,7 @@ public class Car {
   public String carName;
   public int moveCount;
   private static final int CAR_NAME_LENGTH = 5;
-
-  //TODO: throw 대신 try catch 로 리팩토링, input 이 잘못 되면 다시 받아야 함...
+  private final int MOVE_BOUNDARY = 4;
 
   public Car(String carName) throws InvalidFormatException {
     validateCarName(carName);
@@ -37,5 +36,9 @@ public class Car {
 
   public void move() {
     this.moveCount++;
+  }
+
+  public void decideMoving(int number) {
+    if (number >= MOVE_BOUNDARY) this.move();
   }
 }

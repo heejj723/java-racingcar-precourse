@@ -29,6 +29,25 @@ public class CarList {
     return text.split(",");
   }
 
+  public int maxMoveCount() {
+    int maxNum = 0;
+    for(Car car : this.carList) {
+      maxNum = Math.max(car.moveCount, maxNum);
+    }
+    return maxNum;
+  }
+
+  public List<Car> getCarsWithMaximumNumber() {
+    List<Car> winners = new ArrayList<>();
+    int maxNumber = maxMoveCount();
+    for(Car car : this.carList) {
+      if (car.moveCount == maxNumber) {
+        winners.add(car);
+      }
+    }
+    return winners;
+  }
+
 
 
 }

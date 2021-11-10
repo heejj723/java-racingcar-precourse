@@ -1,7 +1,10 @@
 package racinggame.controller;
 
+import racinggame.model.Car;
+import racinggame.model.Game;
 import racinggame.model.Games;
 import racinggame.view.InputView;
+import racinggame.view.OutputView;
 
 /**
  * 1. 자동차 이름에 대한 input 받기
@@ -18,11 +21,21 @@ import racinggame.view.InputView;
 
 public class CarController {
 
-  public static void playGame() {
+  public void playGame() {
     String carNames = InputView.getCarNames();
-    String tryCount = InputView.getTryCount();
-    Games games = new Games(carNames, Integer.parseInt(tryCount));
-    games.play();
+    int tryCount = Integer.parseInt(InputView.getTryCount());
+
+    Games games = new Games(carNames, tryCount);
+    printResult(games, tryCount);
+    OutputView.printWinner(games.getWinners());
+  }
+
+  private void printResult(Games games, int tryCount) {
+    OutputView.printResultMessage();
+    for (int i = 0; i < tryCount; i++) {
+      OutputView.printGameResult(games.getGameResult());
+      System.out.println();
+    }
   }
 
 

@@ -8,6 +8,8 @@ import com.sun.media.sound.InvalidFormatException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class CarModelTest {
 
@@ -67,6 +69,29 @@ public class CarModelTest {
     defaultCar.move();
     // then
     assertThat(defaultCar.moveCount).isEqualTo(2);
+  }
+
+  @Test
+  @DisplayName("들어온 random 값에 대한 행동: 3이하")
+  void 들어온_숫자_판단_3이하() {
+
+    int number = 3;
+    // when
+    defaultCar.decideMoving(number);
+    // then
+    assertThat(defaultCar.moveCount).isEqualTo(0);
+
+  }
+
+  @Test
+  @DisplayName("들어온 random 값에 대한 행동: 4이상")
+  void 들어온_숫자_판단_4이상() {
+
+    int number = 4;
+    // when
+    defaultCar.decideMoving(number);
+    // then
+    assertThat(defaultCar.moveCount).isEqualTo(1);
   }
 
 }
