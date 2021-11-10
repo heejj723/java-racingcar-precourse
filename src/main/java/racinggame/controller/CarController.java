@@ -1,5 +1,6 @@
 package racinggame.controller;
 
+import java.util.List;
 import racinggame.model.Car;
 import racinggame.model.Game;
 import racinggame.model.Games;
@@ -13,16 +14,9 @@ public class CarController {
     int tryCount = Integer.parseInt(InputView.getTryCount());
 
     Games games = new Games(carNames, tryCount);
-    printResult(games, tryCount);
+    List<Car> gameResult = games.getGameResult();
+    OutputView.printResult(gameResult, tryCount);
     OutputView.printWinner(games.getWinners());
-  }
-
-  private void printResult(Games games, int tryCount) {
-    OutputView.printResultMessage();
-    for (int i = 0; i < tryCount; i++) {
-      OutputView.printGameResult(games.getGameResult());
-      System.out.println();
-    }
   }
 
 

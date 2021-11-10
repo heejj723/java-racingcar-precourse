@@ -2,13 +2,14 @@ package racinggame.view;
 
 import java.util.List;
 import racinggame.model.Car;
+import racinggame.model.Games;
 
 public class OutputView {
 
   private static final String RESULT_MESSAGE = "실행 결과";
 
   public static void printCarName(String carName) {
-    System.out.print(carName+":");
+    System.out.print(carName + ":");
   }
 
   public static void printCountBars(int count) {
@@ -30,6 +31,14 @@ public class OutputView {
     for (Car car : gameResult) {
       printCarName(car.carName);
       printCountBars(car.moveCount);
+    }
+  }
+
+  public static void printResult(List<Car> gameResult, int tryCount) {
+    OutputView.printResultMessage();
+    for (int i = 0; i < tryCount; i++) {
+      OutputView.printGameResult(gameResult);
+      System.out.println();
     }
   }
 }
