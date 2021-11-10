@@ -1,38 +1,32 @@
 package racinggame.model;
 
+import com.sun.media.sound.InvalidFormatException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Games {
 
   private final String carNames;
   private final int round;
-  private final Game game;
+  private static Game game;
 
   public Games(String carNames, int round) {
     this.round = round;
     this.carNames = carNames;
-    CarList carList = createCarList();
-    this.game = new Game(carList);
   }
 
-  public String getWinners() {
-    List<Car> winners = game.carList.getCarsWithMaximumNumber();
-    return carToString(winners);
+  public static Games of(String carNames, int round) throws InvalidFormatException {
+    game = new Game(CarList.of(carNames));
+    return new Games(carNames, round);
   }
 
-  public String carToString(List<Car> cars) {
-    StringBuilder result = new StringBuilder();
-    for (Car car : cars) {
-      result.append(car.carName).append(",");
-    }
-    return result.substring(0, result.length()-1);
-  }
-
-  public List<Car> getGameResult() {
+  public List<Car> getResult() {
     return game.getResultOfRound();
   }
 
-  private CarList createCarList() {
-    return new CarList(carNames);
+  public String getWinnersString() {
+    return game.convertWinnerListToString();
   }
+
+
 }

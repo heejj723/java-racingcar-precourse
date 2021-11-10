@@ -1,5 +1,7 @@
 package racinggame.model;
 
+import static racinggame.model.Car.COMMA_STRING;
+
 import java.util.ArrayList;
 import java.util.List;
 import nextstep.utils.Randoms;
@@ -18,16 +20,19 @@ public class Game {
 
   public List<Car> getResultOfRound() {
     List<Car> result = new ArrayList<>();
-    for (int i = 0; i < carList.carList.size(); i++) {
-      Car car = carList.carList.get(i);
-      car.decideMoving(getRandomNumber());
-      result.add(car);
-      updateCarList(i, car);
+    for (int i = 0; i < carList.getSize(); i++) {
+      carList.getCar(i).decideMoving(getRandomNumber());
+      result.add(carList.getCar(i));
     }
     return result;
   }
 
-  public void updateCarList(int index, Car car) {
-    carList.carList.set(index, car);
+  public String convertWinnerListToString() {
+    List<String> winnerNameList = carList.maxMoveCarsName();
+    StringBuilder result = new StringBuilder(Car.BLANK_CAR_NAME);
+    for (String winnerName : winnerNameList) {
+      result.append(winnerName);
+    }
+    return result.substring(0, result.length()-1);
   }
 }

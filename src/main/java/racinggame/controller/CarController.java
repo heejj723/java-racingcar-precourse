@@ -1,5 +1,6 @@
 package racinggame.controller;
 
+import com.sun.media.sound.InvalidFormatException;
 import java.util.List;
 import racinggame.model.Car;
 import racinggame.model.Game;
@@ -8,15 +9,29 @@ import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
 public class CarController {
+  String carNames;
+  int tryCount;
 
   public void playGame() {
-    String carNames = InputView.getCarNames();
-    int tryCount = Integer.parseInt(InputView.getTryCount());
+    Boolean wrongInputFlag = true;
+    Games games = null;
+    while(wrongInputFlag) {
+      carNames = InputView.getCarNames();
+      tryCount = Integer.parseInt(InputView.getTryCount());
+      try {
+        games = Games.of(carNames, tryCount);
+        wrongInputFlag = false;
+      } catch (InvalidFormatException e) {
+        OutputView.printError();
+      }
+    }
+    OutputView.printResultMessage();
+    for(int i = 0; i < tryCount; i++) {
+      OutputView.printGameResult(games.getResult());
+    }
 
-    Games games = new Games(carNames, tryCount);
-    List<Car> gameResult = games.getGameResult();
-    OutputView.printResult(gameResult, tryCount);
-    OutputView.printWinner(games.getWinners());
+    OutputView.printWinner(games.getWinnersString());
+
   }
 
 

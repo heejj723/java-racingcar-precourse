@@ -94,4 +94,15 @@ public class CarModelTest {
     assertThat(defaultCar.moveCount).isEqualTo(1);
   }
 
+  @Test
+  @DisplayName("decideWinner(number): moveCount 가 같을 경우")
+  void 승리자판단_moveCountOverMaxNumber() {
+    // given
+    defaultCar.moveCount = 3;
+    // when
+    String winnerCarName = defaultCar.decideWinner(3);
+    // then
+    assertThat(winnerCarName).isEqualTo("myCar,");
+  }
+
 }

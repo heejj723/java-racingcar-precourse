@@ -9,24 +9,34 @@ public class CarList {
 
   private static List<Car> carList;
 
-  private CarList() {
-    carList = new ArrayList<>();
+  private CarList(List<Car> cars) {
+    this.carList = cars;
   }
 
-  public static List<Car> of(String nameText) throws InvalidFormatException {
+  public static CarList of(String nameText) throws InvalidFormatException {
+    List<Car> cars = new ArrayList<>();
     String[] names = splitWithComma(nameText);
     for (String name: names) {
       Car car = new Car(name);
-      carList.add(car);
+      cars.add(car);
     }
-    return carList;
+
+    return new CarList(cars);
+  }
+
+  public Car getCar(int index) {
+    return carList.get(index);
+  }
+
+  public int getSize() {
+    return carList.size();
   }
 
   private static String[] splitWithComma(String text) {
     return text.split(",");
   }
 
-  private int maxMoveCount() {
+  public int maxMoveCount() {
     int maxNum = 0;
     for(Car car : carList) {
       maxNum = Math.max(car.moveCount, maxNum);
@@ -34,17 +44,13 @@ public class CarList {
     return maxNum;
   }
 
-  public List<Car> getCarsWithMaximumNumber() {
-    List<Car> winners = new ArrayList<>();
+
+  public List<String> maxMoveCarsName() {
+    List<String> maxMoveCarsName = new ArrayList<>();
     int maxNumber = maxMoveCount();
-    for(Car car : carList) {
-      if (car.moveCount == maxNumber) {
-        winners.add(car);
-      }
+    for (Car car : carList) {
+      maxMoveCarsName.add(car.decideWinner(maxNumber));
     }
-    return winners;
+    return maxMoveCarsName;
   }
-
-
-
 }
