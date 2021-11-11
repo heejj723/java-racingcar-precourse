@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import nextstep.utils.Randoms;
 
-public class Game {
+public class GameRound {
 
   public final CarList carList;
   private final int BEGIN_INDEX = 0;
   private final int RANDOM_RANGE_START = 0;
   private final int RANDOM_RANGE_END = 9;
 
-  public Game(CarList carList) {
+  public GameRound(CarList carList) {
     this.carList = carList;
   }
 

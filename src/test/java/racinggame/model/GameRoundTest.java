@@ -2,7 +2,6 @@ package racinggame.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.spy;
 
 import com.sun.media.sound.InvalidFormatException;
@@ -10,20 +9,16 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.Mockito;
-import org.mockito.Spy;
 
-public class GameTest {
+public class GameRoundTest {
 
-  private Game game;
+  private GameRound gameRound;
   private static CarList carList;
 
   @BeforeEach
   void setUp() throws InvalidFormatException {
     carList = CarList.of("a,b,c");
-    game = new Game(carList);
+    gameRound = new GameRound(carList);
   }
 
   @Test
@@ -32,7 +27,7 @@ public class GameTest {
     // given
     // when
     // then
-    assertThat(game.getRandomNumber()).isBetween(0,9);
+    assertThat(gameRound.getRandomNumber()).isBetween(0,9);
   }
 
   @Test
@@ -40,7 +35,7 @@ public class GameTest {
   void 한_라운드에_대한_결과값_반환_4이상() {
     // given
     // when
-    List<Car> result = game.getResultOfRound();
+    List<Car> result = gameRound.getResultOfRound();
     // then
     assertThat(result.get(0).carName).isEqualTo("a");
     assertThat(result.get(1).carName).isEqualTo("b");
@@ -54,9 +49,9 @@ public class GameTest {
     carList.getCar(0).moveCount = 4;
     carList.getCar(1).moveCount = 4;
     carList.getCar(2).moveCount = 3;
-    game = new Game(carList);
+    gameRound = new GameRound(carList);
     // when
-    String result = game.convertWinnerListToString();
+    String result = gameRound.convertWinnerListToString();
     // then
     assertThat(result).isEqualTo("a,b");
 
