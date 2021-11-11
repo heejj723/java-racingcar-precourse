@@ -15,14 +15,19 @@ public class CarList extends CarListUtil{
   }
 
   public static CarList of(String nameText) throws InvalidFormatException {
-    List<Car> cars = new ArrayList<>();
+
     String[] names = splitWithComma(nameText);
+    List<Car> cars = makeCarsWithNames(names);
+    return new CarList(cars);
+  }
+
+  private static List<Car> makeCarsWithNames(String[] names) throws InvalidFormatException {
+    List<Car> cars = new ArrayList<>();
     for (String name: names) {
       Car car = Car.of(name);
       cars.add(car);
     }
-
-    return new CarList(cars);
+    return cars;
   }
 
   public Car getCar(int index) {
