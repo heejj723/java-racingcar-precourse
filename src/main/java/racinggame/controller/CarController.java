@@ -1,9 +1,5 @@
 package racinggame.controller;
 
-import com.sun.media.sound.InvalidFormatException;
-import java.util.List;
-import racinggame.model.Car;
-import racinggame.model.Game;
 import racinggame.model.Games;
 import racinggame.view.InputView;
 import racinggame.view.OutputView;
@@ -13,7 +9,7 @@ public class CarController {
     Boolean wrongInputFlag = true;
     Games games = null;
     String tryCount = null;
-    
+
     while(wrongInputFlag) {
       try {
         tryCount = InputView.getTryCount();
