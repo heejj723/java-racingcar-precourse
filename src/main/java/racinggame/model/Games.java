@@ -5,19 +5,15 @@ import java.util.List;
 
 public class Games {
 
-  private final String carNames;
-  private final int round;
   private static GameRound gameRound;
 
-  private Games(String carNames, int round) {
-    this.round = round;
-    this.carNames = carNames;
+  private Games() {
   }
 
   public static Games of(String carNames, String round) throws InvalidFormatException {
     gameRound = new GameRound(CarList.of(carNames));
-    int number = validateNumber(round);
-    return new Games(carNames, number);
+    validateNumber(round);
+    return new Games();
   }
 
   private static int validateNumber(String round) throws InvalidFormatException {
