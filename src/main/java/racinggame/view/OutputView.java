@@ -1,0 +1,45 @@
+package racinggame.view;
+
+import java.util.List;
+import racinggame.model.Car;
+
+public class OutputView {
+
+  private static final String RESULT_MESSAGE = "실행 결과";
+  private static final String COMMA_SPLITS_WINNERS = ",";
+
+  public static void printCarName(String carName) {
+    System.out.print(carName + " : ");
+  }
+
+  public static void printCountBars(int count) {
+    for (int i = 0; i < count; i++) {
+      System.out.print("-");
+    }
+    System.out.println();
+  }
+
+  public static void printResultMessage() {
+    System.out.println(RESULT_MESSAGE);
+  }
+
+  public static void printWinner(List<String> output) {
+    StringBuilder result = new StringBuilder("");
+    for (String winnerName: output) {
+      result.append(winnerName);
+    }
+    System.out.println("최종 우승자는 " + result.substring(0, result.length()-1) + " 입니다.");
+  }
+
+  public static void printGameResult(List<Car> gameResult) {
+    for (Car car : gameResult) {
+      printCarName(car.carName);
+      printCountBars(car.moveCount);
+    }
+    System.out.println();
+  }
+
+  public static void printError() {
+    System.out.println("[Error]잘못된 입력값입니다");
+  }
+}
