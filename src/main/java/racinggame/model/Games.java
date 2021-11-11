@@ -10,7 +10,7 @@ public class Games {
   private final int round;
   private static Game game;
 
-  public Games(String carNames, int round) {
+  private Games(String carNames, int round) {
     this.round = round;
     this.carNames = carNames;
   }

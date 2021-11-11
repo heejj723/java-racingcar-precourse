@@ -27,7 +27,7 @@ public class CarModelTest {
 
     // when // then
     assertThatThrownBy(() -> {
-      new Car(testCarName);
+      Car.of(testCarName);
     }).isInstanceOf(InvalidFormatException.class)
         .hasMessageContaining(Car.CAR_NAME_LENGTH_OVER);
   }
@@ -40,7 +40,7 @@ public class CarModelTest {
 
     // when // then
     assertThatThrownBy(() -> {
-      new Car(testCarName);
+      Car.of(testCarName);
     }).isInstanceOf(InvalidFormatException.class)
         .hasMessageContaining(Car.NOT_ALPHABET_CAR_NAME);
   }
@@ -100,7 +100,7 @@ public class CarModelTest {
     // given
     defaultCar.moveCount = 3;
     // when
-    String winnerCarName = defaultCar.decideWinner(3);
+    String winnerCarName = defaultCar.getCarNameMoveCountIsMaxNumber(3);
     // then
     assertThat(winnerCarName).isEqualTo("myCar,");
   }

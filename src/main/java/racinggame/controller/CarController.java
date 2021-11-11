@@ -9,17 +9,15 @@ import racinggame.view.InputView;
 import racinggame.view.OutputView;
 
 public class CarController {
-  String carNames;
-  String tryCount;
-
   public void playGame() {
     Boolean wrongInputFlag = true;
     Games games = null;
+    String tryCount = null;
+    
     while(wrongInputFlag) {
-      carNames = InputView.getCarNames();
-      tryCount = InputView.getTryCount();
       try {
-        games = Games.of(carNames, tryCount);
+        tryCount = InputView.getTryCount();
+        games = Games.of(InputView.getCarNames(), tryCount);
         wrongInputFlag = false;
       } catch (Exception e) {
         OutputView.printError();

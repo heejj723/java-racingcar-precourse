@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class CarList {
+public class CarList extends CarListUtil{
 
   private static List<Car> carList;
   private final int MAX_NUMBER_INIT = 0;
@@ -18,7 +18,7 @@ public class CarList {
     List<Car> cars = new ArrayList<>();
     String[] names = splitWithComma(nameText);
     for (String name: names) {
-      Car car = new Car(name);
+      Car car = Car.of(name);
       cars.add(car);
     }
 
@@ -33,10 +33,6 @@ public class CarList {
     return carList.size();
   }
 
-  private static String[] splitWithComma(String text) {
-    return text.split(",");
-  }
-
   public int maxMoveCount() {
     int maxNum = MAX_NUMBER_INIT;
     for(Car car : carList) {
@@ -45,13 +41,12 @@ public class CarList {
     return maxNum;
   }
 
-
   public List<String> maxMoveCarsName() {
-    List<String> maxMoveCarsName = new ArrayList<>();
+    List<String> maxMoveCarsNameList = new ArrayList<>();
     int maxNumber = maxMoveCount();
     for (Car car : carList) {
-      maxMoveCarsName.add(car.decideWinner(maxNumber));
+      maxMoveCarsNameList.add(car.getCarNameMoveCountIsMaxNumber(maxNumber));
     }
-    return maxMoveCarsName;
+    return maxMoveCarsNameList;
   }
 }
