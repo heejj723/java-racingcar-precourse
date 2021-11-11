@@ -31,7 +31,14 @@ public class CarList extends CarListUtil{
   }
 
   public Car getCar(int index) {
+    validateIndexRange(index);
     return carList.get(index);
+  }
+
+  private void validateIndexRange(int index) {
+    if (index >= carList.size()) {
+      throw new IndexOutOfBoundsException();
+    }
   }
 
   public int getSize() {
