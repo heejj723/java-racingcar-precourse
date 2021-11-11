@@ -2,8 +2,8 @@ package racinggame.model;
 
 import com.sun.media.sound.InvalidFormatException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class CarList extends CarListUtil{
 
@@ -39,11 +39,11 @@ public class CarList extends CarListUtil{
   }
 
   public int maxMoveCount() {
-    int maxNum = MAX_NUMBER_INIT;
-    for(Car car : carList) {
-      maxNum = Math.max(car.moveCount, maxNum);
-    }
-    return maxNum;
+    AtomicInteger maxNum = new AtomicInteger();
+    carList.stream().forEach(car -> {
+      maxNum.set(Math.max(maxNum.get(), car.moveCount));
+    });
+    return maxNum.get();
   }
 
   public List<String> maxMoveCarsName() {
