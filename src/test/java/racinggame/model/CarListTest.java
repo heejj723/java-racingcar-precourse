@@ -45,19 +45,6 @@ class CarListTest {
     assertThat(maxNum).isEqualTo(4);
   }
 
-//  @Test
-//  @DisplayName("getCarsWithMaximumNumber(): 우승자 고르기")
-//  void 차_리스트_중_우승자들_고르기() {
-//    carList.getCar(0).moveCount = 4;
-//    carList.getCar(1).moveCount = 2;
-//    carList.getCar(2).moveCount = 4;
-//    // when
-//    List<Car> result = carList.getWinnerCars();
-//    // then
-//    assertThat(result.get(0).carName).isEqualTo("pobi");
-//    assertThat(result.get(0).moveCount).isEqualTo(4);
-//  }
-
   @Test
   @DisplayName("maxMoveCarsName(): 가장 많이 움직인 차의 이름을 뱉는 메소드 테스트")
     void 차_리스트_중_가장_많이_움직인_차_이름_고르기() {
