@@ -66,8 +66,10 @@ public class CarModelTest {
 
     // given
     defaultCar.moveCount = 1;
+    
     // when
     defaultCar.move();
+    
     // then
     assertThat(defaultCar.moveCount).isEqualTo(2);
   }
