@@ -14,6 +14,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 public class CarModelTest {
 
   Car defaultCar;
+
   @BeforeEach
   void setUp() throws InvalidFormatException {
     defaultCar = new Car("myCar");
