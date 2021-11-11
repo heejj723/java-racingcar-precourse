@@ -12,8 +12,9 @@ public class CarController {
 
     while(wrongInputFlag) {
       try {
+        String carName = InputView.getCarNames();
         tryCount = InputView.getTryCount();
-        games = Games.of(InputView.getCarNames(), tryCount);
+        games = Games.of(carName, tryCount);
         wrongInputFlag = false;
       } catch (Exception e) {
         OutputView.printError();

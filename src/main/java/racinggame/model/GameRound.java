@@ -30,12 +30,7 @@ public class GameRound {
     return result;
   }
 
-  public String convertWinnerListToString() {
-    List<String> winnerNameList = carList.maxMoveCarsName();
-    StringBuilder result = new StringBuilder(Car.BLANK_CAR_NAME);
-    for (String winnerName : winnerNameList) {
-      result.append(winnerName);
-    }
-    return result.substring(BEGIN_INDEX, result.length()-1);
+  public List<String> convertWinnerListToString() {
+    return carList.maxMoveCarsName();
   }
 }

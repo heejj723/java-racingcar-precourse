@@ -28,7 +28,7 @@ public class Games {
     return gameRound.getResultOfRound();
   }
 
-  public String getWinnersString() {
+  public List<String> getWinnersString() {
     return gameRound.convertWinnerListToString();
   }
 
