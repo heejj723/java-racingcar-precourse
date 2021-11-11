@@ -10,23 +10,23 @@ import racinggame.view.OutputView;
 
 public class CarController {
   String carNames;
-  int tryCount;
+  String tryCount;
 
   public void playGame() {
     Boolean wrongInputFlag = true;
     Games games = null;
     while(wrongInputFlag) {
       carNames = InputView.getCarNames();
-      tryCount = Integer.parseInt(InputView.getTryCount());
+      tryCount = InputView.getTryCount();
       try {
         games = Games.of(carNames, tryCount);
         wrongInputFlag = false;
-      } catch (InvalidFormatException e) {
+      } catch (Exception e) {
         OutputView.printError();
       }
     }
     OutputView.printResultMessage();
-    for(int i = 0; i < tryCount; i++) {
+    for(int i = 0; i < Integer.parseInt(tryCount); i++) {
       OutputView.printGameResult(games.getResult());
     }
 

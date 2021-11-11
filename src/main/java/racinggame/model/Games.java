@@ -15,9 +15,18 @@ public class Games {
     this.carNames = carNames;
   }
 
-  public static Games of(String carNames, int round) throws InvalidFormatException {
+  public static Games of(String carNames, String round) throws InvalidFormatException {
     game = new Game(CarList.of(carNames));
-    return new Games(carNames, round);
+    int number = validateNumber(round);
+    return new Games(carNames, number);
+  }
+
+  private static int validateNumber(String round) throws InvalidFormatException {
+    try {
+      return Integer.parseInt(round);
+    } catch (NumberFormatException e){
+      throw new InvalidFormatException();
+    }
   }
 
   public List<Car> getResult() {
