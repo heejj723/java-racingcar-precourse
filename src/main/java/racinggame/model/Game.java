@@ -23,7 +23,7 @@ public class Game {
 
   public List<Car> getResultOfRound() {
     List<Car> result = new ArrayList<>();
-    for (int i = 0; i < carList.getSize(); i++) {
+    for (int i = BEGIN_INDEX; i < carList.getSize(); i++) {
       carList.getCar(i).decideMoving(getRandomNumber());
       result.add(carList.getCar(i));
     }
