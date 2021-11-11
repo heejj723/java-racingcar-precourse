@@ -10,11 +10,6 @@ import org.junit.jupiter.api.Test;
 
 class GamesTest {
 
-  @BeforeEach
-  void setUp() {
-
-  }
-
   @Test
   @DisplayName("Games 생성 검증: 잘못된 자동차 이름")
   void games_객체_생성_검증_잘못된_자동차_이름() {
